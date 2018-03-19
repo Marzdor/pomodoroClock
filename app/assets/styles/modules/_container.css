@@ -1,0 +1,24 @@
+.container {
+  width                : 400px;
+  margin               : 50px auto;
+  text-align           : center;
+  display              : grid;
+  grid-template-columns: 1fr 1fr;
+
+  &_settings {
+    font-size            : 1.125rem;
+    display              : grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &_clock {
+    display      : block;
+    width        : 200px;
+    height       : 200px;
+    margin       : 25px auto;
+    border       : 2px solid black;
+    border-radius: 100%;
+    cursor       : pointer;
+    grid-column  : 1/ span 2;
+  }
+}

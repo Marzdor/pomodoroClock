@@ -1,0 +1,13 @@
+* {
+  box-sizing : border-box;
+  font-family: 'Roboto Mono', monospace;
+}
+
+body {
+  background-color: $bodyBackground;
+}
+
+a {
+  text-decoration: none;
+  color          : black;
+}

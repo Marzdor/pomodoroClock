@@ -1,0 +1,9 @@
+.time {
+  &_title {
+    margin-top: 50px;
+  }
+
+  &_display {
+    font-size: 1.5rem;
+  }
+}
