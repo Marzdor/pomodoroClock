@@ -23,7 +23,7 @@ function setTime(event) {
       curTime = eval(curTime);
       if (curTime >= 1) {
         $(".setting--b").text(curTime);
-        if (mode) {
+        if (!(mode)) {
           $(".time_display").text(curTime);
         }
       }
@@ -32,8 +32,9 @@ function setTime(event) {
       curTime = eval(curTime);
       if (curTime >= 1) {
         $(".setting--w").text(curTime);
-        if (mode) {}
-        $(".time_display").text(curTime);
+        if (mode) {
+          $(".time_display").text(curTime);
+        }
       }
     }
   }

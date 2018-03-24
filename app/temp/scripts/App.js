@@ -102,7 +102,7 @@ function setTime(event) {
       curTime = eval(curTime);
       if (curTime >= 1) {
         (0, _jquery2.default)(".setting--b").text(curTime);
-        if (mode) {
+        if (!mode) {
           (0, _jquery2.default)(".time_display").text(curTime);
         }
       }
@@ -111,8 +111,9 @@ function setTime(event) {
       curTime = eval(curTime);
       if (curTime >= 1) {
         (0, _jquery2.default)(".setting--w").text(curTime);
-        if (mode) {}
-        (0, _jquery2.default)(".time_display").text(curTime);
+        if (mode) {
+          (0, _jquery2.default)(".time_display").text(curTime);
+        }
       }
     }
   }
