@@ -370,7 +370,6 @@ a {
   }
 
 .container_clock {
-    display      : block;
     width        : 200px;
     height       : 200px;
     margin       : 25px auto;
@@ -378,6 +377,10 @@ a {
     border-radius: 100%;
     cursor       : pointer;
     grid-column  : 1/ span 2;
+  }
+
+.container_btns {
+    grid-column: 1/ span 2;
   }
 
 .setting_title {
@@ -403,6 +406,29 @@ a {
   }
 
 .btn {
-  cursor : pointer;
-  display: inline-block;
+  cursor    : pointer;
+  display   : inline-block;
+  transition: all 0.4s ease-out;
 }
+
+.btn:hover {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
+
+.btn_control {
+    height          : 25px;
+    width           : 100px;
+    border-radius   : 10%;
+    border          : 2px solid black;
+    background-color: #bec4d5;
+    font-weight     : bold;
+    letter-spacing  : 1.5px;
+    margin          : 0 10px;
+    transition      : all 0.3s ease-out;
+  }
+
+.btn_control:hover {
+      -webkit-transform: scale(1.3);
+              transform: scale(1.3);
+    }

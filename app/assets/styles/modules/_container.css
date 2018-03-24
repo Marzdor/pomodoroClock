@@ -12,7 +12,6 @@
   }
 
   &_clock {
-    display      : block;
     width        : 200px;
     height       : 200px;
     margin       : 25px auto;
@@ -20,5 +19,9 @@
     border-radius: 100%;
     cursor       : pointer;
     grid-column  : 1/ span 2;
+  }
+
+  &_btns {
+    grid-column: 1/ span 2;
   }
 }
