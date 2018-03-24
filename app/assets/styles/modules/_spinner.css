@@ -1,0 +1,41 @@
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  &-break {
+    &:before {
+      content         : '';
+      box-sizing      : border-box;
+      position        : absolute;
+      top             : 0;
+      left            : 0;
+      width           : 200px;
+      height          : 200px;
+      border          : 4px solid black;
+      border-radius   : 100%;
+      border-top-color: red;
+      animation       : spinner 1s linear infinite;
+    }
+  }
+
+  &-work {
+    &:before {
+      content         : '';
+      box-sizing      : border-box;
+      position        : absolute;
+      top             : 0;
+      left            : 0;
+      width           : 200px;
+      height          : 200px;
+      border          : 4px solid black;
+      border-radius   : 100%;
+      border-top-color: lime;
+      animation       : spinner 1s linear infinite;
+    }
+  }
+}
+
+.spinner:before {}

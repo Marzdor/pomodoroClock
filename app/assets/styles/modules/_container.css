@@ -15,10 +15,9 @@
     width        : 200px;
     height       : 200px;
     margin       : 25px auto;
-    border       : 2px solid black;
     border-radius: 100%;
-    cursor       : pointer;
     grid-column  : 1/ span 2;
+    position     : relative;
   }
 
   &_btns {

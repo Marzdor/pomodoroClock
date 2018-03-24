@@ -2,7 +2,8 @@ import Timer from "easytimer.js";
 import $ from "jquery";
 
 const timer = new Timer();
-let mode = "work";
+
+let mode = true;
 
 $(document).ready(() => {
   $(".btn").on("click", setTime);
@@ -25,7 +26,7 @@ function setTime(event) {
       curTime = eval(curTime);
       if (curTime >= 1) {
         $(".setting--b").text(curTime);
-        if (mode === "break") {
+        if (mode) {
           $(".time_display").text(curTime);
         }
       }
@@ -34,13 +35,12 @@ function setTime(event) {
       curTime = eval(curTime);
       if (curTime >= 1) {
         $(".setting--w").text(curTime);
-        if (mode === "work") {}
+        if (mode) {}
         $(".time_display").text(curTime);
       }
     }
   }
 }
-
 
 function startStop() {
   const $time = $(".time_display");
@@ -49,11 +49,13 @@ function startStop() {
   if ($ssBtn.text() === "Stop") {
     timer.stop();
     $ssBtn.text("Start");
-    if (mode === "work") {
+    if (mode) {
       $time.text($(".setting--w").text());
     } else {
       $time.text($(".setting--b").text());
     }
+    $(".container_clock").removeClass('spinner-work');
+    $(".container_clock").removeClass('spinner-break');
   } else {
     timer.start({
       countdown: true,
@@ -61,31 +63,37 @@ function startStop() {
         seconds: parseInt($time.text()) * 60
       }
     });
+
     $ssBtn.text("Stop");
-  }
 
-  timer.addEventListener('secondsUpdated', function(e) {
-    $('.time_display').html(timer.getTimeValues().toString());
-
-  });
-  timer.addEventListener('started', function(e) {
-    $('.time_display').html(timer.getTimeValues().toString());
-  });
-  timer.addEventListener('targetAchieved', function(e) {
-    if (mode === "work") {
-      timer.stop();
-      $time.text($(".setting--b").text())
-      $ssBtn.text("Start");
-      $(".time_title").text("Break");
-      mode = "break";
-      startStop();
+    if (mode) {
+      $(".container_clock").addClass('spinner-work');
     } else {
-      timer.stop();
-      $time.text($(".setting--w").text())
-      $ssBtn.text("Start");
-      $(".time_title").text("Work");
-      mode = "work";
-      startStop();
+      $(".container_clock").addClass('spinner-break');
     }
-  });
+
+    timer.addEventListener('secondsUpdated', function(e) {
+      const timerVal = timer.getTimeValues().toString();
+      $('.time_display').html(timerVal);
+
+      if (timerVal === "00:00:00") {
+        timer.stop();
+        $ssBtn.text("Start");
+        if (mode) {
+          $time.text($(".setting--b").text())
+          $(".time_title").text("Break");
+          $(".container_clock").addClass('spinner-break');
+          $(".container_clock").removeClass('spinner-work');
+          mode = false;
+        } else {
+          $time.text($(".setting--w").text())
+          $(".time_title").text("Work");
+          $(".container_clock").addClass('spinner-work');
+          $(".container_clock").removeClass('spinner-break');
+          mode = true;
+        }
+        startStop();
+      }
+    });
+  }
 }
