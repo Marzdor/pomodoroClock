@@ -8,10 +8,7 @@ let mode = true;
 $(document).ready(() => {
   $(".btn").on("click", setTime);
   $("#startStopBtn").on("click", startStop);
-  $("#stop").on("click", () => {
-    timer.pause();
-    $("#startStopBtn").text("Resume");
-  });
+  $("#pause").on("click", pause);
 });
 
 function setTime(event) {
@@ -68,8 +65,10 @@ function startStop() {
 
     if (mode) {
       $(".container_clock").addClass('spinner-work');
+      $(".container_clock").removeClass('spinner-work-paused');
     } else {
       $(".container_clock").addClass('spinner-break');
+      $(".container_clock").removeClass('spinner-break-paused');
     }
 
     timer.addEventListener('secondsUpdated', function(e) {
@@ -95,5 +94,17 @@ function startStop() {
         startStop();
       }
     });
+  }
+}
+
+function pause() {
+  timer.pause();
+  $("#startStopBtn").text("Resume");
+  if (mode) {
+    $(".container_clock").removeClass("spinner-work");
+    $(".container_clock").addClass("spinner-work-paused");
+  } else {
+    $(".container_clock").removeClass("spinner-break");
+    $(".container_clock").addClass("spinner-break-paused");
   }
 }

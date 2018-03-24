@@ -465,6 +465,23 @@ a {
               animation       : spinner 1s linear infinite;
     }
 
+.spinner-break-paused:before {
+        content             : '';
+        box-sizing          : border-box;
+        position            : absolute;
+        top                 : 0;
+        left                : 0;
+        width               : 200px;
+        height              : 200px;
+        border              : 4px solid black;
+        border-radius       : 100%;
+        border-top-color    : red;
+        -webkit-animation           : spinner 1s linear infinite;
+                animation           : spinner 1s linear infinite;
+        -webkit-animation-play-state: paused;
+                animation-play-state: paused;
+      }
+
 .spinner-work:before {
       content         : '';
       box-sizing      : border-box;
@@ -480,4 +497,19 @@ a {
               animation       : spinner 1s linear infinite;
     }
 
-.spinner:before {}
+.spinner-work-paused:before {
+        content             : '';
+        box-sizing          : border-box;
+        position            : absolute;
+        top                 : 0;
+        left                : 0;
+        width               : 200px;
+        height              : 200px;
+        border              : 4px solid black;
+        border-radius       : 100%;
+        border-top-color    : lime;
+        -webkit-animation           : spinner 1s linear infinite;
+                animation           : spinner 1s linear infinite;
+        -webkit-animation-play-state: paused;
+                animation-play-state: paused;
+      }

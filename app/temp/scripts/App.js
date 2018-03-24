@@ -87,10 +87,7 @@ var mode = true;
 (0, _jquery2.default)(document).ready(function () {
   (0, _jquery2.default)(".btn").on("click", setTime);
   (0, _jquery2.default)("#startStopBtn").on("click", startStop);
-  (0, _jquery2.default)("#stop").on("click", function () {
-    timer.pause();
-    (0, _jquery2.default)("#startStopBtn").text("Resume");
-  });
+  (0, _jquery2.default)("#pause").on("click", pause);
 });
 
 function setTime(event) {
@@ -147,8 +144,10 @@ function startStop() {
 
     if (mode) {
       (0, _jquery2.default)(".container_clock").addClass('spinner-work');
+      (0, _jquery2.default)(".container_clock").removeClass('spinner-work-paused');
     } else {
       (0, _jquery2.default)(".container_clock").addClass('spinner-break');
+      (0, _jquery2.default)(".container_clock").removeClass('spinner-break-paused');
     }
 
     timer.addEventListener('secondsUpdated', function (e) {
@@ -174,6 +173,18 @@ function startStop() {
         startStop();
       }
     });
+  }
+}
+
+function pause() {
+  timer.pause();
+  (0, _jquery2.default)("#startStopBtn").text("Resume");
+  if (mode) {
+    (0, _jquery2.default)(".container_clock").removeClass("spinner-work");
+    (0, _jquery2.default)(".container_clock").addClass("spinner-work-paused");
+  } else {
+    (0, _jquery2.default)(".container_clock").removeClass("spinner-break");
+    (0, _jquery2.default)(".container_clock").addClass("spinner-break-paused");
   }
 }
 
